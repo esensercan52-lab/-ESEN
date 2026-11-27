@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yazar Adı | Resmi Web Sitesi</title>
+    <style>
+        :root {
+            --bg-color: #faf8f5;
+            --text-color: #2c2a29;
+            --accent-color: #8c5a3c;
+            --card-bg: #ffffff;
+            --border-color: #e6e0d8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.7;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 5rem 10%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: normal;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #5c5855;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 0.8rem 1.8rem;
+            text-decoration: none;
+            font-family: 'Segoe UI', sans-serif;
+            border-radius: 4px;
+            transition: opacity 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        section {
+            padding: 4rem 10%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            font-weight: normal;
+        }
+
+        /* Kitaplar Grid */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .book-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.5rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .book-cover {
+            width: 140px;
+            height: 200px;
+            background-color: #dcd5cc;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.85rem;
+            border-radius: 3px;
+        }
+
+        .book-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .book-card p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        /* Yazılar & Denemeler */
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .article-item {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-left: 4px solid var(--accent-color);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .article-date {
+            font-size: 0.85rem;
+            color: #777;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .article-item h3 {
+            margin: 0.3rem 0 0.7rem;
+        }
+
+        .read-more {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* İletişim Formu */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 600px;
+        }
+
+        input, textarea {
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1rem;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            header { flex-direction: column; gap: 1rem; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">ADINIZ SOYADINIZ</a>
+        <nav>
+            <ul>
+                <li><a href="#hakkimda">Hakkımda</a></li>
+                <li><a href="#kitaplar">Kitaplarım</a></li>
+                <li><a href="#yazilar">Yazılarım</a></li>
+                <li><a href="#iletisim">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>"Kelimeler, görünmeyeni görünür kılmanın en sessiz yoludur."</h1>
+        <p>Roman, öykü ve deneme yazarı. İnsan ruhunun derinliklerine ve zamanın izlerine dair anlatılar.</p>
+        <a href="#kitaplar" class="btn">Eserlerimi İncele</a>
+    </div>
+
+    <section id="hakkimda">
+        <h2>Hakkımda</h2>
+        <p>
+            Buraya kendi biyografinizi ekleyebilirsiniz. Edebiyat yolculuğunuza nasıl başladığınızı, 
+            hangi türlerde eserler verdiğinizi, aldığınız ödülleri ve okurlarınıza vermek istediğiniz 
+            temel mesajı sade bir dille anlatabilirsiniz.
+        </p>
+    </section>
+
+    <section id="kitaplar">
+        <h2>Kitaplarım</h2>
+        <div class="books-grid">
+            <div class="book-card">
+                <div class="book-cover">Kitap Kapağı 1</div>
+                <h3>Kitap Adı Bir</h3>
+                <p>Yayınevi, 2024 • Roman. Kitabın konusunu özetleyen kısa ve ilgi çekici bir tanıtım metni.</p>
+                <a href="#" class="read-more">Satın Al / İncele →</a>
+            </div>
+            <div class="book-card">
+                <div class="book-cover">Kitap Kapağı 2</div>
+                <h3>Kitap Adı İki</h3>
+                <p>Yayınevi, 2022 • Öykü. Şehrin unutulmuş sokaklarında geçen dokuz farklı insan hikayesi.</p>
+                <a href="#" class="read-more">Satın Al / İncele →</a>
+            </div>
+            <div class="book-card">
+                <div class="book-cover">Kitap Kapağı 3</div>
+                <h3>Kitap Adı Üç</h3>
+                <p>Yayınevi, 2020 • Deneme. Modern çağda yalnızlık, sanat ve edebiyat üzerine düşünceler.</p>
+                <a href="#" class="read-more">Satın Al / İncele →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="yazilar">
+        <h2>Son Yazılar ve Denemeler</h2>
+        <div class="article-list">
+            <article class="article-item">
+                <span class="article-date">20 Kasım 2026</span>
+                <h3>Yazma Eylemi ve Sessizliğin Ritmi</h3>
+                <p>Bir hikayeye başlarken kağıdın karşısında duyulan o ilk tereddüt aslında yaratımın en saf halidir...</p>
+                <span class="read-more" onclick="alert('Buraya yazının tamamının açılacağı sayfa veya pencere bağlanabilir.')">Devamını Oku →</span>
+            </article>
+            <article class="article-item">
+                <span class="article-date">04 Ekim 2026</span>
+                <h3>Klasikleri Neden Tekrar Okuruz?</h3>
+                <p>Değişen kitaplar değil, her okumada başka bir insana dönüşen okurun ta kendisidir...</p>
+                <span class="read-more" onclick="alert('Buraya yazının tamamının açılacağı sayfa veya pencere bağlanabilir.')">Devamını Oku →</span>
+            </article>
+        </div>
+    </section>
+
+    <section id="iletisim">
+        <h2>İletişim</h2>
+        <p style="margin-bottom: 1rem;">Söyleşi davetleri, basın talepleri veya okur mektupları için mesaj gönderebilirsiniz.</p>
+        <form onsubmit="event.preventDefault(); alert('Mesajınız alındı! Teşekkür ederiz.'); this.reset();">
+            <input type="text" placeholder="Adınız Soyadınız" required>
+            <input type="email" placeholder="E-posta Adresiniz" required>
+            <textarea rows="5" placeholder="Mesajınız..." required></textarea>
+            <button type="submit">Mesaj Gönder</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Adınız Soyadınız. Tüm hakları saklıdır.</p>
+    </footer>
+
+</body>
+</html>
